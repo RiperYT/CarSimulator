@@ -222,12 +222,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6294903632476947563}
   - component: {fileID: 6294903632476947606}
-  - component: {fileID: 6294903632476947605}
   - component: {fileID: 6294903632476947561}
   - component: {fileID: 6294903632476947560}
   - component: {fileID: 6294903632476947604}
   - component: {fileID: 6294903632476947607}
-  - component: {fileID: 3634804627137872940}
+  - component: {fileID: 6012532273673037160}
   m_Layer: 0
   m_Name: Hatchback
   m_TagString: Untagged
@@ -269,20 +268,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6294903632476947605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294903632476947562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e61d6c28527e88945afd8fe57892d509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ownColider: {fileID: 6294903630722086467}
-  _camera: {fileID: 0}
 --- !u!114 &6294903632476947561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +631,7 @@ MonoBehaviour:
   stalledLightsOff: {fileID: 0}
   handbrakeLightsOn: {fileID: 0}
   handbrakeLightsOff: {fileID: 0}
---- !u!114 &3634804627137872940
+--- !u!114 &6012532273673037160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -658,8 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61d6c28527e88945afd8fe57892d509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ownColider: {fileID: 0}
-  _camera: {fileID: 0}
+  _ownColider: {fileID: 6294903630722086467}
 --- !u!1 &6294903632517243621
 GameObject:
   m_ObjectHideFlags: 0

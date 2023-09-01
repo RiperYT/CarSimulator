@@ -10,8 +10,8 @@ using VehiclePhysics;
 public class CarInfo : MonoBehaviour
 {
     [SerializeField] private Collider _ownColider;
-    [SerializeField] private Camera _camera;
 
+    private Camera _camera;
     private VehicleBase _vehicleBase;
     private VPVehicleController _controller;
 
@@ -20,6 +20,7 @@ public class CarInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _camera = Camera.main;
         _vehicleBase = gameObject.GetComponent<VehicleBase>();
         _controller = gameObject.GetComponent<VPVehicleController>();
 
@@ -30,7 +31,7 @@ public class CarInfo : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(DistanceToTheNearestCar());
+        Debug.Log(IsActivated());
     }
 
     //Get speed of the car
@@ -54,8 +55,9 @@ public class CarInfo : MonoBehaviour
     //Get engine status
     public bool IsActivated()
     {
+        _vehicleBase.data.Get(Channel.Vehicle, VehicleData.EngineWorking);
         if (_vehicleBase)
-            return _vehicleBase.data.Get(Channel.Input, InputData.Key) == 0 || _vehicleBase.data.Get(Channel.Input, InputData.Key) == 1 ? true : false;
+            return _vehicleBase.data.Get(Channel.Vehicle, VehicleData.EngineWorking) == 1 ? true : false;
         else
             return false;
     }
@@ -86,15 +88,13 @@ public class CarInfo : MonoBehaviour
         foreach(var car in _vehicles)
             if (PointInCameraView(car.transform.position))
             {
-            if (_ownColider == null) Debug.Log("Null");
                 var point1 = _ownColider.ClosestPointOnBounds(car.gameObject.transform.position);
                 var point2 = car.ClosestPointOnBounds(point1);
 
-                var point3 = car.ClosestPointOnBounds(_ownColider.gameObject.transform.position);
+                var point3 = car.ClosestPointOnBounds(_ownColider.transform.position);
                 var point4 = _ownColider.ClosestPointOnBounds(point3);
 
                 min = Math.Min(min, Math.Min(Vector3.Distance(point1, point2), Vector3.Distance(point3, point4)));
-            Debug.Log(point1 + " " + point2 + " " + point3 + " " + point4);
             }
 
         if (min >= 0 && min < 20)
